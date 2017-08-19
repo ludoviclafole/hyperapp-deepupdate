@@ -1,6 +1,6 @@
 {
   "name": "hyperapp-deepupdate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "hyperapp mixin for deep state update",
   "keywords": [
     "hyperapp",
@@ -20,7 +20,7 @@
   "scripts": {
     "test": "bundlesize",
     "build": "npm run bundle && npm run minify",
-    "bundle": "rollup -i src/index.js -o dist/deepupdate.js -m -f umd -n hyperapp-deepupdate",
+    "bundle": "rollup -i src/index.js -o dist/deepupdate.js -m -f umd -n deepupdate",
     "minify": "uglifyjs dist/deepupdate.js -o dist/deepupdate.min.js --mangle --compress 'warnings=\"false\",pure_funcs=\"Object.defineProperty\"' --source-map content=dist/deepupdate.js.map",
     "prepublish": "npm run build",
     "release": "npm run build && npm test && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
