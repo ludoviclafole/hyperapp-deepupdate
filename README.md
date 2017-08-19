@@ -1,7 +1,13 @@
-Hyperapp DeepUpdate
-==================
+# Hyperapp DeepUpdate
 
-simple usage:
+
+## Usage
+install :
+```bash
+npm install --save hyperapp-deepupdate
+```
+
+A basic complete example
 ```jsx harmony
 import { app, h } from 'hyperapp'
 import { deepUpdateMixin } from 'hyperapp-deepupdate'
@@ -31,11 +37,30 @@ app({
     },
     actions: {
         increment(state, actions, index) {
-            return update => update([
-                [ 'counters', index, 'value', state => state + 1 ]
-            ])
+            return [ 'counters', index, 'value', state => state + 1 ]
         }
     },
     mixins : [ deepUpdateMixin ]
 })
+```
+
+Using with thunk :
+```js
+    actions: {
+        increment(state, actions, index) {
+            return update => update([ 'counters', index, 'value', state => state + 1 ])
+        }
+    },
+```
+
+Batching updates :
+```js
+    actions: {
+        increment(state, actions, index) {
+            return [
+              [ 'counters', index, 'value', state => state + 1 ],
+              [ 'counters', index, 'value', state => state + 1 ],
+          ]
+        }
+    },
 ```
