@@ -1,0 +1,43 @@
+{
+  "name": "hyperapp-deepupdate",
+  "version": "0.0.1",
+  "description": "hyperapp mixin for deep state update",
+  "keywords": [
+    "hyperapp",
+    "mixin",
+    "deepupdate"
+  ],
+  "author": "Lafole Ludovic",
+  "license": "MIT",
+  "main": "dist/deepupdate.min.js",
+  "jsnext:main": "src/index.js",
+  "module": "src/index.js",
+  "repository": "nooblad/hyperapp-deepupdate",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "test": "bundlesize",
+    "build": "npm run bundle && npm run minify",
+    "bundle": "rollup -i src/index.js -o dist/deepupdate.js -m -f umd -n hyperapp-deepupdate",
+    "minify": "uglifyjs dist/deepupdate.js -o dist/deepupdate.min.js --mangle --compress 'warnings=\"false\",pure_funcs=\"Object.defineProperty\"' --source-map content=dist/deepupdate.js.map",
+    "prepublish": "npm run build",
+    "release": "npm run build && npm test && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+  },
+  "babel": {
+    "presets": "es2015"
+  },
+  "bundlesize": [
+    {
+      "path": "./dist/deepupdate.min.js",
+      "threshold": "0.5Kb"
+    }
+  ],
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "bundlesize": "^0.13.2",
+    "rollup": "^0.47.6",
+    "uglify-js": "^3.0.28"
+  }
+}
